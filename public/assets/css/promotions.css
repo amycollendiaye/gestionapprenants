@@ -1,0 +1,99 @@
+.promotions-container {
+    display: flex;
+    gap: 30px;
+    position: relative;
+    margin: 20px;
+}
+
+.active-promotion-sidebar {
+    position: sticky;
+    top: 20px;
+    width: 300px;
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+
+.active-promotion-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+}
+
+.active-promotion-card h3 {
+    color: #2d3748;
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f97316;
+}
+
+.promotion-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.promotion-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.promotion-details {
+    padding: 10px 0;
+}
+
+.promotion-details h4 {
+    color: #1a202c;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.date {
+    color: #718096;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-badge.active {
+    background-color: #f97316;
+    color: white;
+}
+
+.no-active-promotion {
+    background: #f8fafc;
+    border: 2px dashed #e2e8f0;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    color: #718096;
+}
+
+.promotions-content {
+    flex: 1;
+    min-width: 0;
+}
+
+@media (max-width: 768px) {
+    .promotions-container {
+        flex-direction: column;
+    }
+    
+    .active-promotion-sidebar {
+        position: relative;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

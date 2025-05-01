@@ -1,0 +1,347 @@
+/* Styles généraux */
+
+  
+ 
+  
+
+  /* Section du formulaire - toujours présente mais normalement cachée */
+  .promotion-form-container {
+    display: none; /* Par défaut caché */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  
+  /* Système d'affichage/masquage basé sur une case à cocher */
+  #toggle-form {
+    display: none; /* Cache la case à cocher */
+  }
+  
+  #toggle-form:checked ~ .promotion-form-container {
+    display: block; /* Affiche le formulaire quand coché */
+  }
+  
+  .promotion-form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .promotion-form-header h2 {
+    margin: 0;
+    color: #1e293b;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #64748b;
+    text-decoration: none;
+  }
+  
+  .promotion-form-description {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  /* Styles du formulaire */
+  .promotion-form {
+    width: 100%;
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .form-row .form-group {
+    flex: 1;
+  }
+  
+  .date-input-container {
+    position: relative;
+  }
+  
+  .calendar-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    pointer-events: none;
+  }
+  
+  /* Input styles */
+  #promotion-name, #referentiel-search {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+  }
+  
+  #referentiel-search {
+    padding: 10px 40px;
+  }
+  
+  #start-date, #end-date {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* File upload styles */
+  #taf {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .file-upload-container {
+    border: 1px dashed #ddd;
+    padding: 12px;
+    border-radius: 4px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .upload-button {
+    background-color: #fff;
+    border: 1px solid #f97316;
+    color: #f97316;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .upload-text {
+    font-size: 14px;
+    color: #666;
+    margin-left: 8px;
+  }
+  
+  .file-restrictions {
+    font-size: 12px;
+    color: #999;
+    margin-top: 8px;
+  }
+  
+  /* Referentiels container */
+  .search-container {
+    position: relative;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    color: var(--orange);
+  }
+  
+  .referentiels-container {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 8px;
+  }
+  
+  .referentiel-item {
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .referentiel-item:last-child {
+    border-bottom: none;
+  }
+  
+  /* Button styles */
+  .form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  
+  .cancel-button {
+    background-color: transparent;
+    border: none;
+    color: #333;
+    padding: 10px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .submit-button {
+    background-color: #f97316;
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  
+  
+  /* Filtres et recherche */
+  .filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .formu {
+    flex-grow: 1;
+    margin-right: 16px;
+  }
+  
+  #form {
+    width: 100%;
+    padding: 10px 40px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+  }
+  
+  .view-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .filter-dropdown {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .view-button {
+    background-color: #f1f5f9;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .view-button.active {
+    background-color: #f97316;
+    color: white;
+    border-color: #f97316;
+  }
+  
+  /* Grid/List view styles */
+  .promotions-grid {
+    display: grid;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .container.show-list .promotions-grid {
+    display: none;
+  }
+  
+  .promotions-list {
+    display: none;
+  }
+  
+  .container.show-list .promotions-list {
+    display: block;
+  }
+  
+  .promotion-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+  }
+  
+  /* Pagination styles */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  
+  .pagination-button {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .pagination-button.active {
+    background-color: #f97316;
+    color: white;
+    border-color: #f97316;
+  }
+  
+  .pagination-button.prev {
+    margin-right: 8px;
+  }
+  
+  .pagination-button.next {
+    margin-left: 8px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .stats-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .form-row {
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .filter-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .formu {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 16px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .stats-container {
+      grid-template-columns: 1fr;
+    }
+  }
