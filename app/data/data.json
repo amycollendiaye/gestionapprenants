@@ -1,0 +1,327 @@
+{
+    "users": [
+        {
+            "id": "1",
+            "name": "Admin",
+            "email": "amycolle@gmail.com",
+            "password": "123",
+            "profile": "Admin"
+
+        },{
+            "id": "1",
+            "name": "Amy",
+            "email": "amycollendiaye103@gmail.com",
+            "password": "123",
+            "profile":"apprenant"
+
+        }
+      
+
+    ],
+    "promotions": [
+        {
+            "name": "PROMO 7",
+            "date_debut": "11\/11\/2024",
+            "date_fin": "12\/12\/2025",
+            "image": "68104c95e1900.jpeg",
+            "status": "active",
+            "apprenants": [],
+            "etat": "en cours",
+            "referentiels": {
+                "0": "68108c3c68f0f",
+                "1": "6810a7985cb07",
+                "2": "680e3015b84eb",
+                "3": "680e2fb21b13e",
+                "4": "680e3055c65ec",
+                "10": "680e2f58c9e4d",
+                "11": "680e30c526815"
+            },
+            "id": 8
+        },
+        {
+            "name": "PROMO 2",
+            "date_debut": "12\/11\/2019",
+            "date_fin": "12\/12\/2020",
+            "image": "680e3176eac40.jpeg",
+            "status": "inactive",
+            "apprenants": [
+                1250,
+                1252,
+                1253,
+                1254,
+                1255,
+                1256,
+                1257,
+                1258,
+                1259,
+                1260,
+                1261,
+                1262,
+                1263,
+                1264,
+                1265,
+                1303
+            ],
+            "referentiels": [
+                "680e3055c65ec",
+                "680e30c526815",
+                "680e3015b84eb",
+                "680e2f58c9e4d",
+                "680e2fb21b13e"
+            ],
+            "id": 2
+        },
+        {
+            "name": "PROMO  8 ",
+            "date_debut": "11\/11\/2018",
+            "date_fin": "12\/12\/2019",
+            "image": "680f6f804c758.jpeg",
+            "status": "inactive",
+            "apprenants": [],
+            "referentiels": [
+                "680e2fb21b13e",
+                "680e3055c65ec",
+                "680e2f58c9e4d"
+            ],
+            "id": 7
+        },
+        {
+            "name": "PROMO 6",
+            "date_debut": "12\/12\/2023",
+            "date_fin": "12\/12\/2024",
+            "image": "680e3268766b3.jpeg",
+            "status": "inactive",
+            "apprenants": [],
+            "referentiels": [
+                "680e2fb21b13e",
+                "680e3015b84eb",
+                "680e2f58c9e4d",
+                "680e3055c65ec",
+                "680e30c526815",
+                "680f57c2c801d",
+                "680f587d62034"
+            ],
+            "id": 6
+        },
+        {
+            "name": "PROMO3",
+            "date_debut": "12\/11\/2020",
+            "date_fin": "12\/12\/2021",
+            "image": "680e31af550bf.jpeg",
+            "status": "inactive",
+            "apprenants": [
+                25
+            ],
+            "referentiels": [
+                "680e2f58c9e4d",
+                "680e3015b84eb",
+                "680e3055c65ec",
+                "680e30c526815",
+                "680e2fb21b13e"
+            ],
+            "id": 3
+        },
+        {
+            "name": "promo 1",
+            "date_debut": "11\/11\/2018",
+            "date_fin": "12\/12\/2019",
+            "image": "680e313fc5f4f.jpeg",
+            "status": "inactive",
+            "apprenants": [],
+            "referentiels": [
+                "680e2f58c9e4d",
+                "680e2fb21b13e",
+                "680e3015b84eb"
+            ],
+            "id": 1
+        },
+        {
+            "name": "PROMO 5",
+            "date_debut": "12\/11\/2022",
+            "date_fin": "12\/12\/2023",
+            "image": "680e3242ec310.jpeg",
+            "status": "inactive",
+            "apprenants": [],
+            "referentiels": [
+                "680e2fb21b13e",
+                "680e2f58c9e4d",
+                "680e3015b84eb"
+            ],
+            "id": 5
+        },
+        {
+            "name": "PROMO 4",
+            "date_debut": "12\/12\/2021",
+            "date_fin": "12\/12\/2021",
+            "image": "680e31f1d2c27.jpeg",
+            "status": "inactive",
+            "apprenants": [],
+            "referentiels": [
+                "680e30c526815",
+                "680e2f58c9e4d",
+                "680e3055c65ec",
+                "680e3015b84eb",
+                "680e2fb21b13e"
+            ],
+            "id": 4
+        }
+    ],
+    "referentiels": [
+        {
+            "id": "680e2f58c9e4d",
+            "name": "DEVELOPPEMENT DEV MOBILE",
+            "description": " De analyse du besoin  à la mise  en ligne",
+            "image": "assets\/images\/referentiels\/1745760088_devmobile.jpeg",
+            "capacite": 50,
+            "sessions": 1,
+            "modules": []
+        },
+        {
+            "id": "680e2fb21b13e",
+            "name": "REFERENT DIGITAL",
+            "description": "Couteau_ du numerique le referent digital  parcipe  ala creation et innovation",
+            "image": "assets\/images\/referentiels\/1745760178_refdig.jpeg",
+            "capacite": 50,
+            "sessions": 1,
+            "modules": []
+        },
+        {
+            "id": "680e3015b84eb",
+            "name": "DEV DATA",
+            "description": "De  l'analyse  du besoin a la data visualisation en passant  par la gestion des données",
+            "image": "assets\/images\/referentiels\/1745760277_devdata.jpeg",
+            "capacite": 25,
+            "sessions": 1,
+            "modules": []
+        },
+        {
+            "id": "680e3055c65ec",
+            "name": "HACKEUSE ",
+            "description": "La formation  d'assistance digitale reverse uniquement aux  filles ",
+            "image": "assets\/images\/referentiels\/1745760341_asistantdigital.jpeg",
+            "capacite": 2,
+            "sessions": 2,
+            "modules": []
+        },
+        {
+            "id": "680e30c526815",
+            "name": "AWS",
+            "description": "De l'analyse  des besoins au monitoring de l'infrastructure   du cloud",
+            "image": "assets\/images\/referentiels\/1745760453_aws.jpeg",
+            "capacite": 25,
+            "sessions": 2,
+            "modules": []
+        },
+        {
+            "id": "6810ead1e2d55",
+            "name": "DEVELEPPEMENT DEV MOBILE",
+            "description": "Wxcghjk",
+            "image": null,
+            "capacite": "30",
+            "sessions": "1",
+            "modules": []
+        }
+    ],
+    "apprenants": [
+        {
+            "id": "68136c35700ee",
+            "nom": "ndiaye",
+            "prenom": "amy collle",
+            "email": "amycollendiaye103@gmail.com",
+            "image": null,
+            "status": "retenu",
+            "motpassee": "SONATEL123",
+            "telephone": "+221781030848",
+            "referentiel": "DEVELOPPEMENT DEV MOBILE",
+            "date_naissance": "16\/11\/2000",
+            "lieu_naissance": "tivaouane",
+            "adresse": "COLOBANE",
+            "tuteur": {
+                "nomprenom": "mouhamed abib sy ndiaye",
+                "telephone": "776939348",
+                "lienparente": " meme mere et pere",
+                "adresse": "sacre coeur"
+            }
+        },
+        {
+            "id": "68136cb28f50f",
+            "nom": "Diagne",
+            "prenom": "Thiane",
+            "email": "amycollendiaye103@gmail.com",
+            "image": null,
+            "status": "retenu",
+            "motpassee": "SONATEL123",
+            "telephone": "+221781030848",
+            "referentiel": "DEVELOPPEMENT DEV MOBILE",
+            "date_naissance": "11\/11\/2001",
+            "lieu_naissance": "tivaouane",
+            "adresse": "COLOBANE",
+            "tuteur": {
+                "nomprenom": " amy colle ndiaye",
+                "telephone": "+221781030848",
+                "lienparente": "mon amie ",
+                "adresse": "COLOBANE"
+            }
+        },
+        {
+            "id": "68136ce82dea1",
+            "nom": " Diouf",
+            "prenom": "Sofia ",
+            "email": "amycollendiaye103@gmail.com",
+            "image": null,
+            "status": "retenu",
+            "motpassee": "SONATEL123",
+            "telephone": "+221781030848",
+            "referentiel": "DEVELOPPEMENT DEV MOBILE",
+            "date_naissance": "11\/21\/2000",
+            "lieu_naissance": "tivaouane",
+            "adresse": "guediawaye",
+            "tuteur": {
+                "nomprenom": "amy colle ndiaye",
+                "telephone": "+221781030848",
+                "lienparente": " meme mere et pere",
+                "adresse": "COLOBANE"
+            }
+        },
+        {
+            "id": "68136e2c322d4",
+            "nom": "kane",
+            "prenom": "Nafissatou ",
+            "email": " nafiboucar@gmail.com",
+            "image": null,
+            "status": "retenu",
+            "motpassee": "SONATEL123",
+            "telephone": "+221781030848",
+            "referentiel": "REFERENT DIGITAL",
+            "date_naissance": "11\/11\/2000",
+            "lieu_naissance": " Keur massar",
+            "adresse": "Almadies",
+            "tuteur": {
+                "nomprenom": "amy colle",
+                "telephone": "+221781030848",
+                "lienparente": "une amie",
+                "adresse": "touba"
+            }
+        },
+        {
+            "id": "68136fb094648",
+            "nom": "Mbow",
+            "prenom": "Astou",
+            "email": "amycollendiaye103@gmail.com",
+            "image": null,
+            "status": "retenu",
+            "motpassee": "SONATEL123",
+            "telephone": "781030844",
+            "referentiel": "DEVELOPPEMENT DEV MOBILE",
+            "date_naissance": "11\/12\/2000",
+            "lieu_naissance": "THIES",
+            "adresse": "COLOBANE",
+            "tuteur": {
+                "nomprenom": "amy colle ndiaye",
+                "telephone": "+221781030848",
+                "lienparente": "mere",
+                "adresse": "COLOBANE"
+            }
+        }
+    ]
+}
