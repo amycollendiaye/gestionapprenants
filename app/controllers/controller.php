@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Controllers;
-
+require_once __DIR__ . '/../models/model.php';  
+require_once __DIR__ . '/../models/promotion.model.php';
+require_once __DIR__ . '/../models/auth.model.php';
 require_once __DIR__ . '/../enums/path.enum.php';
 require_once __DIR__ . '/../services/session.service.php';
 
@@ -10,10 +12,12 @@ use App\Services;
 
 // Fonctions communes à tous les contrôleurs
 function render($layout, $view, $data = []) {
-    global $model, $session_services;
+     global $model,$modelpromotion;
+    global  $session_services;
     
+
     // Récupérer la promotion active
-    $active_promotion = $model['get_current_promotion']();
+    $active_promotion = $modelpromotion['get_current_promotion']();
     
     // Ajouter la promotion active aux données
     $data['active_promotion'] = $active_promotion;

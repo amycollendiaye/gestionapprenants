@@ -9,4 +9,4 @@ $success_messages = [
     ]
 ];
 
-return $success_messages;
+

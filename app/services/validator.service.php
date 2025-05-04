@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+require_once __DIR__. '/file.service.php';
 
 // Regroupement des fonctions de validation
 $validator_services = [
@@ -88,15 +89,15 @@ $validator_services = [
         return $errors;
     },
     
-    'validate_promotion' => function(array $post_data, array $files): array {
+    'validate_promotion' => function(array $post_data, array $files) use ($file_services) : array  {
         $errors = [];
         
         // Validation du nom (obligatoire et unique)
         if (empty($post_data['name'])) {
             $errors['name']='Le nom de la promotion est requis pour la création' ;
         } else {
-            global $model;
-            if ($model['promotion_name_exists']($post_data['name'])) {
+            global $model ,$modelpromotion;
+            if ($modelpromotion['promotion_name_exists']($post_data['name'])) {
                 $errors['name'] = 'Ce nom de promotion existe déjà';
             }
         }
@@ -137,13 +138,11 @@ $validator_services = [
         if (empty($files['image']['name'])) {
             $errors['image'] = 'L\'image de la promotion est requise';
         } else {
-            $allowed_types = ['image/jpeg', 'image/png'];
-            if (!in_array($files['image']['type'], $allowed_types)) {
-                $errors[] = 'Le format de l\'image doit être JPG ou PNG';
-            }
+
+            $image =$file_services["handle_promotion_image"]($files['image']);
             
-            if ($files['image']['size'] > 2 * 1024 * 1024) { // 2MB
-                $errors[] = 'La taille de l\'image ne doit pas dépasser 2MB';
+            if(!$image){
+                $errors['image'] = 'Une erreur est survenue lors du téléchargement de l\'image';
             }
         }
         
@@ -290,4 +289,6 @@ $validator_services = [
     return $errors;
 }
   }
+
 ];
+return $validator_services;

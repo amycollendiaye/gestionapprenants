@@ -6,37 +6,113 @@
             "email": "amycolle@gmail.com",
             "password": "123",
             "profile": "Admin"
-
-        },{
-            "id": "1",
-            "name": "Amy",
-            "email": "amycollendiaye103@gmail.com",
-            "password": "123",
-            "profile":"apprenant"
-
         }
-      
-
     ],
     "promotions": [
+        {
+            "name": "PROMO  8 ",
+            "date_debut": "11\/11\/2018",
+            "date_fin": "12\/12\/2019",
+            "image": "680f6f804c758.jpeg",
+            "status": "active",
+            "apprenants": [],
+            "referentiels": [
+                "680e2fb21b13e",
+                "680e3055c65ec",
+                "680e2f58c9e4d"
+            ],
+            "id": 7
+        },
         {
             "name": "PROMO 7",
             "date_debut": "11\/11\/2024",
             "date_fin": "12\/12\/2025",
             "image": "68104c95e1900.jpeg",
-            "status": "active",
+            "status": "inactive",
             "apprenants": [],
             "etat": "en cours",
             "referentiels": {
                 "0": "68108c3c68f0f",
                 "1": "6810a7985cb07",
                 "2": "680e3015b84eb",
-                "3": "680e2fb21b13e",
-                "4": "680e3055c65ec",
-                "10": "680e2f58c9e4d",
-                "11": "680e30c526815"
+                "3": "680e3055c65ec",
+                "4": "680e30c526815",
+                "5": "6810ead1e2d55",
+                "12": "680e2fb21b13e"
             },
             "id": 8
+        },
+        {
+            "name": "PROMO 4",
+            "date_debut": "12\/12\/2021",
+            "date_fin": "12\/12\/2021",
+            "image": "680e31f1d2c27.jpeg",
+            "status": "inactive",
+            "apprenants": [],
+            "referentiels": [
+                "680e30c526815",
+                "680e2f58c9e4d",
+                "680e3055c65ec",
+                "680e3015b84eb",
+                "680e2fb21b13e"
+            ],
+            "id": 4
+        },
+        {
+            "name": "sems",
+            "date_debut": "12\/12\/2000",
+            "date_fin": "04\/04\/2040",
+            "image": null,
+            "status": "inactive",
+            "apprenants": [],
+            "referentiels": [
+                "680e2f58c9e4d",
+                "680e2fb21b13e"
+            ],
+            "id": 11
+        },
+        {
+            "name": "PROMO 6",
+            "date_debut": "12\/12\/2023",
+            "date_fin": "12\/12\/2024",
+            "image": "680e3268766b3.jpeg",
+            "status": "inactive",
+            "apprenants": [],
+            "referentiels": [
+                "680e2fb21b13e",
+                "680e3015b84eb",
+                "680e2f58c9e4d",
+                "680e3055c65ec",
+                "680e30c526815",
+                "680f57c2c801d",
+                "680f587d62034"
+            ],
+            "id": 6
+        },
+        {
+            "name": "sdfghjkl",
+            "date_debut": "12\/12\/2000",
+            "date_fin": "04\/04\/2040",
+            "image": null,
+            "status": "inactive",
+            "apprenants": [],
+            "referentiels": [
+                "680e2f58c9e4d",
+                "680e2fb21b13e"
+            ],
+            "id": 10
+        },
+        {
+            "name": "sdfghjkl5",
+            "date_debut": "12\/12\/2000",
+            "date_fin": "05\/11\/2001",
+            "image": null,
+            "status": "inactive",
+            "apprenants": [],
+            "referentiels": [
+                "680e2fb21b13e"
+            ],
+            "id": 13
         },
         {
             "name": "PROMO 2",
@@ -70,38 +146,6 @@
                 "680e2fb21b13e"
             ],
             "id": 2
-        },
-        {
-            "name": "PROMO  8 ",
-            "date_debut": "11\/11\/2018",
-            "date_fin": "12\/12\/2019",
-            "image": "680f6f804c758.jpeg",
-            "status": "inactive",
-            "apprenants": [],
-            "referentiels": [
-                "680e2fb21b13e",
-                "680e3055c65ec",
-                "680e2f58c9e4d"
-            ],
-            "id": 7
-        },
-        {
-            "name": "PROMO 6",
-            "date_debut": "12\/12\/2023",
-            "date_fin": "12\/12\/2024",
-            "image": "680e3268766b3.jpeg",
-            "status": "inactive",
-            "apprenants": [],
-            "referentiels": [
-                "680e2fb21b13e",
-                "680e3015b84eb",
-                "680e2f58c9e4d",
-                "680e3055c65ec",
-                "680e30c526815",
-                "680f57c2c801d",
-                "680f587d62034"
-            ],
-            "id": 6
         },
         {
             "name": "PROMO3",
@@ -150,20 +194,54 @@
             "id": 5
         },
         {
-            "name": "PROMO 4",
-            "date_debut": "12\/12\/2021",
-            "date_fin": "12\/12\/2021",
-            "image": "680e31f1d2c27.jpeg",
+            "name": "rama",
+            "date_debut": "12\/12\/2000",
+            "date_fin": "05\/11\/2001",
+            "image": null,
             "status": "inactive",
             "apprenants": [],
             "referentiels": [
-                "680e30c526815",
-                "680e2f58c9e4d",
-                "680e3055c65ec",
+                "680e2f58c9e4d"
+            ],
+            "id": 9
+        },
+        {
+            "name": "ram85",
+            "date_debut": "12\/12\/2000",
+            "date_fin": "05\/11\/2001",
+            "image": null,
+            "status": "inactive",
+            "apprenants": [],
+            "referentiels": [
+                "680e2f58c9e4d"
+            ],
+            "id": 12
+        },
+        {
+            "name": "ROROR",
+            "date_debut": "12\/12\/2000",
+            "date_fin": "04\/04\/2040",
+            "image": null,
+            "status": "inactive",
+            "apprenants": [],
+            "referentiels": [
                 "680e3015b84eb",
+                "680e3055c65ec"
+            ],
+            "id": 14
+        },
+        {
+            "name": "sems555",
+            "date_debut": "12\/12\/2000",
+            "date_fin": "04\/04\/2040",
+            "image": null,
+            "status": "inactive",
+            "apprenants": [],
+            "referentiels": [
+                "680e2f58c9e4d",
                 "680e2fb21b13e"
             ],
-            "id": 4
+            "id": 15
         }
     ],
     "referentiels": [
@@ -320,6 +398,146 @@
                 "nomprenom": "amy colle ndiaye",
                 "telephone": "+221781030848",
                 "lienparente": "mere",
+                "adresse": "COLOBANE"
+            }
+        },
+        {
+            "id": "68175ea39a6f0",
+            "nom": "colle",
+            "prenom": "amy",
+            "email": "amycolle@gmail.com",
+            "image": null,
+            "status": "retenu",
+            "motpassee": "SONATEL123",
+            "telephone": "+221781030848",
+            "referentiel": null,
+            "date_naissance": "11\/11\/2000",
+            "lieu_naissance": "thies",
+            "adresse": "IEG",
+            "tuteur": {
+                "nomprenom": "abdallah",
+                "telephone": "+221781030848",
+                "lienparente": " frere ",
+                "adresse": "COLOBANE"
+            }
+        },
+        {
+            "id": "68175ed1125f2",
+            "nom": "colle",
+            "prenom": "moussa ",
+            "email": "amycolle@gmail.com",
+            "image": null,
+            "status": "retenu",
+            "motpassee": "SONATEL123",
+            "telephone": "+221781030848",
+            "referentiel": null,
+            "date_naissance": "11\/11\/2000",
+            "lieu_naissance": "thies",
+            "adresse": "IEG",
+            "tuteur": {
+                "nomprenom": "amy colle ndiaye",
+                "telephone": "+221781030848",
+                "lienparente": " frere ",
+                "adresse": "COLOBANE"
+            }
+        },
+        {
+            "id": "681761995cbe9",
+            "nom": "",
+            "prenom": "",
+            "email": "",
+            "image": null,
+            "status": "retenu",
+            "motpassee": "SONATEL123",
+            "telephone": "",
+            "referentiel": null,
+            "date_naissance": "",
+            "lieu_naissance": "",
+            "adresse": "",
+            "tuteur": {
+                "nomprenom": "",
+                "telephone": "",
+                "lienparente": "",
+                "adresse": ""
+            }
+        },
+        {
+            "id": "681761a470f3f",
+            "nom": "",
+            "prenom": "",
+            "email": "",
+            "image": null,
+            "status": "retenu",
+            "motpassee": "SONATEL123",
+            "telephone": "",
+            "referentiel": null,
+            "date_naissance": "",
+            "lieu_naissance": "",
+            "adresse": "",
+            "tuteur": {
+                "nomprenom": "",
+                "telephone": "",
+                "lienparente": "",
+                "adresse": ""
+            }
+        },
+        {
+            "id": "6817683125db7",
+            "nom": "colle",
+            "prenom": "amy",
+            "email": "amycolle@gmail.com",
+            "image": null,
+            "status": "retenu",
+            "motpassee": "SONATEL123",
+            "telephone": "+221781030848",
+            "referentiel": null,
+            "date_naissance": "11\/11\/2000",
+            "lieu_naissance": "thies",
+            "adresse": "IEG",
+            "tuteur": {
+                "nomprenom": "amy colle",
+                "telephone": "+221781030848",
+                "lienparente": " frere ",
+                "adresse": "IEG"
+            }
+        },
+        {
+            "id": "68176b4be5fc8",
+            "nom": "ndaiye",
+            "prenom": "bintou ndiaye",
+            "email": "amycollendiaye103@gmail.com",
+            "image": null,
+            "status": "retenu",
+            "motpassee": "SONATEL123",
+            "telephone": "+221781030848",
+            "referentiel": null,
+            "date_naissance": "11\/11\/2000",
+            "lieu_naissance": "thies",
+            "adresse": "COLOBANE",
+            "tuteur": {
+                "nomprenom": "amy colle ndiaye",
+                "telephone": "+221781030848",
+                "lienparente": " frere ",
+                "adresse": "COLOBANE"
+            }
+        },
+        {
+            "id": "68177f42c98e2",
+            "nom": "colle",
+            "prenom": "amy",
+            "email": "amycolle@gmail.com",
+            "image": null,
+            "status": "retenu",
+            "motpassee": "SONATEL123",
+            "telephone": "+221781030848",
+            "referentiel": "REFERENT DIGITAL",
+            "date_naissance": "12\/1\/2024",
+            "lieu_naissance": " mbour ",
+            "adresse": "IEG",
+            "tuteur": {
+                "nomprenom": "Etudiante en licence 3 développement web",
+                "telephone": "+221781030848",
+                "lienparente": " pere ",
                 "adresse": "COLOBANE"
             }
         }

@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Controllers;
-
+require_once __DIR__.'/../models/auth.model.php';
+require_once __DIR__.'/../models/promotion.model.php';
+require_once __DIR__.'/../models/referentiel.model.php';
+require_once __DIR__.'/../models/apprenant.model.php';
 require_once __DIR__ . '/controller.php';
 require_once __DIR__ . '/../models/model.php';
 require_once __DIR__ . '/../services/session.service.php';
@@ -13,7 +16,7 @@ use App\Enums;
 
 // Affichage du tableau de bord
 function dashboard() {
-    global $session_services, $model;
+    global $session_services, $model ,$modelpromotion;
     
     $session_services['start_session']();
     

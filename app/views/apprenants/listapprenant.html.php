@@ -7,8 +7,8 @@
     <div class="container main-content">
         <div class="title-section">
             <h1 class="title">Apprenants</h1>
-            <span class="learner-count"> <?=count($apprenants)?> apprenants</span>
-        </div>
+          <!-- <span class="learner-count"> <?=count($apprenants)?> apprenants</span> -->
+       </div>
 
         <div class="filters">
             <div class="search-filter">
@@ -16,12 +16,13 @@
             </div>
             <div class="filter-dropdown" placeholder="Filtrer par référentiel">
                <select name="totalreferenteil" id="" class="filter-button" placeholder="Filtrer par référentiel">
-                        <?php $ref=($model['get_referentiels_by_promotion']($active_promotion['id']));
-                              foreach ($ref as $referentiel) :?>
+                        
+                            <?php  foreach ($ref as $referentiel) :?>
                                 <option value="<?= $referentiel['name'] ?>"   name="">  <?= $referentiel["name"]; ?></option>
                                 
                                <?php endforeach;?>
                                </select>
+                              
             </div>
             <div class="filter-dropdown">
                 <select class="filter-button">

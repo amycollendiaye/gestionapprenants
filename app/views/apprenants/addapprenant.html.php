@@ -1,4 +1,3 @@
-
     <link rel="stylesheet" href="/assets/css/apprenants/add.css">
   
 
@@ -13,7 +12,7 @@
                         <h2>Informations de l'apprenant</h2>
                         <span class="edit-icon">✏️</span>
                     </div>
-                    
+
                     <div class="section-content">
                         <div class="form-row">
                      
@@ -39,10 +38,8 @@
                                 <?php endif; ?>
                                 <label for="nom">Référentiel</label>
                         <select  name="referentiel" id="referentiel">
-                        <?php $ref=($model['get_referentiels_by_promotion']($active_promotion['id']));
-                              foreach ($ref as $referentiel) :?>
-                                
-                                <option value="<?= $referentiel['name'] ?>"   name="">  <?= $referentiel["name"]; ?></option>
+                            <?php  foreach ($ref as $referentiel) :?>
+                                <option value="<?= $referentiel['name'] ?>"   name="referentiel">  <?= $referentiel["name"]; ?></option>
                                 
                                <?php endforeach;?>
                             </select>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controllers;
-
+require_once __DIR__.'/../models/auth.model.php';
 require_once __DIR__ . '/controller.php';
 require_once __DIR__ . '/../models/model.php';
 require_once __DIR__ . '/../services/validator.service.php';
@@ -29,7 +29,7 @@ function login_page() {
 
 // Traitement de la connexion
 function login_process() {
-    global $model, $validator_services, $session_services, $error_messages, $success_messages;
+    global $model,$modelauth, $validator_services, $session_services, $error_messages, $success_messages;
     
     $session_services['start_session']();
     
@@ -62,7 +62,7 @@ function login_process() {
     }
     
     // Authentification de l'utilisateur
-    $user = $model['authenticate']($email, $password);
+    $user = $modelauth['authenticate']($email, $password);
     
     if ($user) {
         // Stocker toutes les informations nécessaires de l'utilisateur
