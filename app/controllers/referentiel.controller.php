@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Controllers;
-
+require_once __DIR__.'/../models/auth.model.php';
+require_once __DIR__.'/../models/promotion.model.php';
+require_once __DIR__.'/../models/referentiel.model.php';
+require_once __DIR__.'/../models/apprenant.model.php';
 require_once __DIR__ . '/controller.php';
 require_once __DIR__ . '/../models/model.php';
 require_once __DIR__ . '/../services/validator.service.php';
@@ -17,58 +20,11 @@ use App\Enums;
 use Exception; // Ajoutez cette ligne
 
 // Ajouter cette fonction après les requires et avant les autres fonctions
-function validate_referentiel($data) {
-    global $validator_services;
-    $errors = [];
-    
-    // Validation du nom
-    if ($validator_services['is_empty']($data['name'])) {
-        $errors['name'] = 'Le nom du référentiel est obligatoire';
-    } else {
-        global $model;
-        if ($model['referentiel_name_exists']($data['name'])) {
-            $errors['name'] = 'Ce nom de referentiel existe déjà';
-        }
-    }
-    
-    // Validation de la description
-    if ($validator_services['is_empty']($data['description'])) {
-        $errors['description'] = 'La description est obligatoire';
-    }
-    
-    // Validation de la capacité
-    if ($validator_services['is_empty']($data['capacite'])) {
-        $errors['capacite'] = 'La capacité est obligatoire';
-    } elseif (!is_numeric($data['capacite']) || $data['capacite'] <= 0) {
-        $errors['capacite'] = 'La capacité doit être un nombre positif';
-    }
-    
-    // Validation des sessions
-    if ($validator_services['is_empty']($data['sessions'])) {
-        $errors['sessions'] = 'Le nombre de sessions est obligatoire';
-    } elseif (!in_array($data['sessions'], ['1', '2', '3'])) {
-        $errors['sessions'] = 'Le nombre de sessions doit être entre 1 et 3';
-    }
-    
-    // Validation de l'image si elle est présente
-    if (isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
-        $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
-        $max_size = 5 * 1024 * 1024; // 5MB
-        
-        if (!in_array($_FILES['image']['type'], $allowed_types)) {
-            $errors['image'] = 'Format d\'image non valide (JPG, PNG ou GIF uniquement)';
-        }
-        if ($_FILES['image']['size'] > $max_size) {
-            $errors['image'] = 'L\'image ne doit pas dépasser 5MB';
-        }
-    }
-    
-    return $errors;
-}
 
 // Affichage de la liste des référentiels de la promotion en cours
 function list_referentiels() {
-    global $model, $session_services;
+    global $model, $session_services,$modelpromotion;
+   
     
     try {
         // Vérifier l'authentification
@@ -77,10 +33,10 @@ function list_referentiels() {
             redirect('?page=forbidden');
             return;
         }
-        
+     
         // Récupérer la promotion courante
-        $current_promotion = $model['get_current_promotion']();
-        
+         $current_promotion = $modelpromotion['get_current_promotion']();
+       
         // Si aucune promotion n'est active
         if (!$current_promotion) {
             $session_services['set_flash_message']('info', 'Aucune promotion active');
@@ -89,7 +45,7 @@ function list_referentiels() {
         }
         
         // Récupération des référentiels de la promotion courante
-        $referentiels = $model['get_referentiels_by_promotion']($current_promotion['id']);
+        $referentiels = $modelpromotion['get_referentiels_by_promotion']($current_promotion['id']);
         
         // Filtrage des référentiels selon le critère de recherche
         $search = $_GET['search'] ?? '';
@@ -163,13 +119,13 @@ function list_all_referentiels() {
 
 // Affichage du formulaire d'ajout d'un référentiel
 function add_referentiel_form() {
-    global $model;
+    global $model,$modelpromotion;
     
     // Vérification des droits d'accès (Admin uniquement)
     $user = check_profile(Enums\ADMIN);
     
     // Récupération de la promotion active
-    $active_promotion = $model['get_current_promotion']();
+    $active_promotion = $modelpromotion['get_current_promotion']();
     
     // Affichage de la vue
     render('admin.layout.php', 'referentiel/addref.html.php', [
@@ -180,7 +136,7 @@ function add_referentiel_form() {
 
 
 function add_referentiel_process() {
-    global $model, $session_services;
+    global $model, $session_services,$modelreferentiel,$validator_services;
     
     // Vérification des droits d'accès
     check_profile(Enums\ADMIN);
@@ -194,8 +150,7 @@ function add_referentiel_process() {
     ];
     
     // Validation des données
-    $errors = validate_referentiel($referentiel_data);
-    
+$errors=$validator_services["validate_referentiel"]($referentiel_data)  ;  
     // S'il y a des erreurs, retourner au formulaire avec les messages
     if (!empty($errors)) {
         $session_services['set_flash_message']('danger', 'Veuillez corriger les erreurs dans le formulaire');
@@ -207,7 +162,7 @@ function add_referentiel_process() {
     }
     
     // Si tout est valide, créer le référentiel
-    $result = $model['create_referentiel']($referentiel_data);
+    $result = $modelreferentiel['create_referentiel']($referentiel_data);
     
     if (!$result) {
         $session_services['set_flash_message']('danger', 'Erreur lors de la création du référentiel');
@@ -220,14 +175,14 @@ function add_referentiel_process() {
 }
 // Affichage du formulaire d'affectation/désaffectation de référentiels à une promotion
 function assign_referentiels_form() {
-    global $model, $session_services;
+    global $model, $session_services,$modelpromotion;
     
     // Vérification des droits d'accès
     $user = check_auth();
     
     // Récupération de la promotion active
     $active_promotion = null;
-    $promotions = $model['get_all_promotions']();
+    $promotions = $modelpromotion['get_all_promotions']();
     
     foreach ($promotions as $promotion) {
         if ($promotion['status'] === 'active') {
@@ -263,14 +218,14 @@ function assign_referentiels_form() {
 // Traitement de l'affectation de référentiels
 function assign_referentiels_process() {
 
-    global $model, $session_services;
+    global $model, $session_services ,$modelpromotion,$modelreferentiel;
     
     // Vérification des droits d'accès
     check_auth();
     
     // Récupération de la promotion active
     $active_promotion = null;
-    $promotions = $model['get_all_promotions']();
+    $promotions = $modelpromotion['get_all_promotions']();
     
     foreach ($promotions as $promotion) {
         if ($promotion['status'] === 'active') {
@@ -308,7 +263,7 @@ function assign_referentiels_process() {
     $updated_referentiels = array_unique(array_merge($current_referentiels, $selected_referentiels));
     
     // Mise à jour des référentiels de la promotion
-    $result = $model['assign_referentiels_to_promotion']($active_promotion['id'], $updated_referentiels);
+    $result = $modelreferentiel['assign_referentiels_to_promotion']($active_promotion['id'], $updated_referentiels);
     
     if (!$result) {
         $session_services['set_flash_message']('danger', 'Erreur lors de la mise à jour des référentiels.');
@@ -322,13 +277,13 @@ function assign_referentiels_process() {
 
 // Traitement de la désaffectation d'un référentiel individuel
 function unassign_referentiel_process() {
-    global $model, $session_services;
+    global $model, $session_services,$modelpromotion,$modelreferentiel;
     
     // Vérification des droits d'accès
     check_auth();
     
     // Récupération de la promotion active
-    $active_promotion = $model['get_current_promotion']();
+    $active_promotion = $modelpromotion['get_current_promotion']();
     
     if (!$active_promotion) {
         $session_services['set_flash_message']('warning', 'Aucune promotion active. Veuillez d\'abord activer une promotion.');
@@ -362,7 +317,7 @@ function unassign_referentiel_process() {
         });
         
         // Mise à jour des référentiels de la promotion
-        $result = $model['update_promotion_referentiels']($active_promotion['id'], array_values($updated_referentiels));
+        $result = $modelreferentiel['update_promotion_referentiels']($active_promotion['id'], array_values($updated_referentiels));
         
         if (!$result) {
             throw new Exception('Erreur lors de la désaffectation du référentiel.');

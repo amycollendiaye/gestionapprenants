@@ -10,4 +10,5 @@ enum Messages: string {
     case PROMOTION_INACTIVE = 'La promotion a été désactivée avec succès';
     case PROMOTION_CREATE_ERROR = 'Erreur lors de la création de la promotion';
     case PROMOTION_CREATED = 'La promotion a été créée avec succès';
+    
 }

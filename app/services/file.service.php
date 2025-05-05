@@ -9,16 +9,25 @@ $file_services = [
         if ($file['error'] !== UPLOAD_ERR_OK) {
             return null;
         }
-        
-        $upload_dir = Enums\UPLOAD_DIR . '/promotions/';
-        if (!is_dir($upload_dir)) {
-            mkdir($upload_dir, 0777, true);
+
+        // Chemin absolu vers public/assets/images/uploads
+        $baseDir = realpath(__DIR__ . '/../../public/assets/images/uploads');
+        if ($baseDir === false) {
+            throw new \RuntimeException("Répertoire de base introuvable");
         }
-        
-        $file_extension = pathinfo($file['name'], PATHINFO_EXTENSION);
-        $file_name = uniqid() . '.' . $file_extension;
-        $target_path = $upload_dir . '/' . $file_name;
-        
-        return move_uploaded_file($file['tmp_name'], $target_path) ? $file_name : null;
+
+        $uploadDir = $baseDir . '/promotions';
+        if (!is_dir($uploadDir) && !mkdir($uploadDir, 0755, true)) {
+            throw new \RuntimeException("Impossible de créer le dossier $uploadDir");
+        }
+
+        $ext      = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $filename = uniqid() . '.' . $ext;
+        $target   = $uploadDir . '/' . $filename;
+
+        return move_uploaded_file($file['tmp_name'], $target)
+            ? $filename
+            : null;
     }
 ];
+return $file_services;

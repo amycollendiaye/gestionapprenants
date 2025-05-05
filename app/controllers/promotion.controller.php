@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controllers;
-
+require_once __DIR__.'/../models/promotion.model.php';
 require_once __DIR__ . '/controller.php';
 require_once __DIR__ . '/../models/model.php';
 require_once __DIR__ . '/../services/validator.service.php';
@@ -25,7 +25,7 @@ use App\Enums\Messages;
 
 // Affichage de la liste des promotions
 function list_promotions() {
-    global $model, $session_services;
+    global $model,  $modelpromotion, $session_services ;
     
 
     
@@ -33,17 +33,18 @@ function list_promotions() {
     $user = check_auth();
 
     // Récupérer les statistiques
-    $stats = $model['get_statistics']();
-    
+    $stats = $modelpromotion['get_statistics']();
     // Récupérer le terme de recherche depuis GET
     $search = $_GET['search'] ?? '';
+  
     
     // Récupérer la page courante et le nombre d'éléments par page
     $current_page = isset($_GET['page_num']) ? (int)$_GET['page_num'] : 1;
     $items_per_page = 5; // Modification de 6 à 8 éléments par page
 
-    // Récupérer toutes les promotions
-    $promotions = $model['get_all_promotions']();
+    // Récupérer toutes les promotions*
+    
+    $promotions = $modelpromotion['get_all_promotions']();
     
     // Filtrer les promotions si un terme de recherche est présent
     if (!empty($search)) {
@@ -51,6 +52,7 @@ function list_promotions() {
             return stripos($promotion['name'], $search) !== false;
         });
     }
+
     
     // Calculer le nombre total de pages
     $total_items = count($promotions);
@@ -82,14 +84,14 @@ function list_promotions() {
 
 // Affichage du formulaire d'ajout d'une promotion
 function add_promotion_form() {
-    global $model, $session_services;
+    global $model,$modelpromotion, $session_services;
     
-
+  
     // Vérér si l'utilisateur est connecté
     $user = check_auth();
     
     // Récupérer les statistiques
-    $stats = $model['get_statistics']();
+    $stats = $modelpromotion['get_statistics']();
     
     // Récupérer tous les référentiels pour les afficher dans le formulaire
     $all_referentiels = $model['get_all_referentiels']();
@@ -106,10 +108,11 @@ function add_promotion_form() {
 
 // Ajout d'une promotion//
 function add_promotion() {
-    global $model, $session_services, $validator_services, $file_services;
+    global $model,$modelpromotion,$modelauth, $session_services, $validator_services, $file_services;
     
     // Vérification de l'authentification
     $user = check_auth();
+    
     
     // Vérification de la méthode POST
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -125,14 +128,15 @@ function add_promotion() {
     
     // Validation des données
     $validation = $validator_services['validate_promotion']($_POST, $_FILES);
-    
+   
+   
     if (!$validation['valid']) {
         // Récupérer les statistiques
-        $stats = $model['get_statistics']();
-        
+        $stats = $modelpromotion['get_statistics']();
+      
         // Récupérer tous les référentiels pour les afficher dans le formulaire
         $all_referentiels = $model['get_all_referentiels']();
-        
+       
         // Rendu de la vue avec les erreurs
         render('admin.layout.php', 'promotion/add.html.php', [
             'user' => $user,
@@ -141,17 +145,17 @@ function add_promotion() {
             'errors' => $validation['errors'],
             'form_data' => $_POST,
             'all_referentiels' => $all_referentiels
+
         ]);
+       
+
         return;
+       
     }
     
     // Traitement de l'image avec le service
-    $image_path = $file_services['handle_promotion_image']($_FILES['image']);
-    if (!$image_path) {
-        $session_services['set_flash_message']('error', Messages::IMAGE_UPLOAD_ERROR->value);
-        redirect('?page=add_promotion_form');
-        return;
-    }
+   $image_path = $file_services['handle_promotion_image']($_FILES['image']);
+    
     
     // Préparation des données
     $promotion_data = [
@@ -165,7 +169,7 @@ function add_promotion() {
     ];
     
     // Création de la promotion
-    $result = $model['create_promotion']($promotion_data);
+    $result = $modelpromotion['create_promotion']($promotion_data);
     
     if (!$result) {
         $session_services['set_flash_message']('error', Messages::PROMOTION_CREATE_ERROR->value);
@@ -191,7 +195,7 @@ function search_referentiels() {
     exit;
 }
 function toggle_promotion_status() {
-    global $model, $session_services;
+    global $model,$modelpromotion, $session_services;
     
 
     // //érification de l'authentification
@@ -203,14 +207,16 @@ function toggle_promotion_status() {
     }
     
     $promotion_id = filter_input(INPUT_POST, 'promotion_id', FILTER_VALIDATE_INT);
+   
     if (!$promotion_id) {
         $session_services['set_flash_message']('error', Messages::PROMOTION_ERROR->value);
         redirect('?page=promotions');
         return;
     }
     
-    $result = $model['toggle_promotion_status']($promotion_id);
-    
+    $result = $modelpromotion['toggle_promotion_status']($promotion_id);
+
+
     if ($result) {
         $message = $result['status'] === Status::ACTIVE->value ? 
                   Messages::PROMOTION_ACTIVATED->value : 
@@ -222,4 +228,3 @@ function toggle_promotion_status() {
     
     redirect('?page=promotions');
 }
-// Affichage de la page de promotion
