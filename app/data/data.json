@@ -10,25 +10,11 @@
     ],
     "promotions": [
         {
-            "name": "PROMO  8 ",
-            "date_debut": "11\/11\/2018",
-            "date_fin": "12\/12\/2019",
-            "image": "680f6f804c758.jpeg",
-            "status": "active",
-            "apprenants": [],
-            "referentiels": [
-                "680e2fb21b13e",
-                "680e3055c65ec",
-                "680e2f58c9e4d"
-            ],
-            "id": 7
-        },
-        {
             "name": "PROMO 7",
             "date_debut": "11\/11\/2024",
             "date_fin": "12\/12\/2025",
             "image": "68104c95e1900.jpeg",
-            "status": "inactive",
+            "status": "active",
             "apprenants": [],
             "etat": "en cours",
             "referentiels": {
@@ -41,6 +27,38 @@
                 "12": "680e2fb21b13e"
             },
             "id": 8
+        },
+        {
+            "name": "PROMO3",
+            "date_debut": "12\/11\/2020",
+            "date_fin": "12\/12\/2021",
+            "image": "680e31af550bf.jpeg",
+            "status": "inactive",
+            "apprenants": [
+                25
+            ],
+            "referentiels": [
+                "680e2f58c9e4d",
+                "680e3015b84eb",
+                "680e3055c65ec",
+                "680e30c526815",
+                "680e2fb21b13e"
+            ],
+            "id": 3
+        },
+        {
+            "name": "PROMO  8 ",
+            "date_debut": "11\/11\/2018",
+            "date_fin": "12\/12\/2019",
+            "image": "680f6f804c758.jpeg",
+            "status": "inactive",
+            "apprenants": [],
+            "referentiels": [
+                "680e2fb21b13e",
+                "680e3055c65ec",
+                "680e2f58c9e4d"
+            ],
+            "id": 7
         },
         {
             "name": "PROMO 4",
@@ -148,24 +166,6 @@
             "id": 2
         },
         {
-            "name": "PROMO3",
-            "date_debut": "12\/11\/2020",
-            "date_fin": "12\/12\/2021",
-            "image": "680e31af550bf.jpeg",
-            "status": "inactive",
-            "apprenants": [
-                25
-            ],
-            "referentiels": [
-                "680e2f58c9e4d",
-                "680e3015b84eb",
-                "680e3055c65ec",
-                "680e30c526815",
-                "680e2fb21b13e"
-            ],
-            "id": 3
-        },
-        {
             "name": "promo 1",
             "date_debut": "11\/11\/2018",
             "date_fin": "12\/12\/2019",
@@ -242,6 +242,19 @@
                 "680e2fb21b13e"
             ],
             "id": 15
+        },
+        {
+            "name": "PROMO 8",
+            "date_debut": "11\/01\/2021",
+            "date_fin": "04\/04\/2022",
+            "image": null,
+            "status": "inactive",
+            "apprenants": [],
+            "referentiels": [
+                "680e2f58c9e4d",
+                "680e2fb21b13e"
+            ],
+            "id": 16
         }
     ],
     "referentiels": [

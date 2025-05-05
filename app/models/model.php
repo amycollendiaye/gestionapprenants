@@ -38,7 +38,7 @@ $model = [
     //ecriture des données
     'write_data' => function ($data) {
         // Assurez-vous que le chemin est correct
-        $file_path = Enums\DATA_PATH;
+        $file_path =  __DIR__ . '/../data/data.json';;
         
         // Encodez les données en JSON avec des options pour une meilleure lisibilité
         $json_data = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);

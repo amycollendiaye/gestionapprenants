@@ -215,7 +215,8 @@ function toggle_promotion_status() {
     }
     
     $result = $modelpromotion['toggle_promotion_status']($promotion_id);
- 
+
+
     if ($result) {
         $message = $result['status'] === Status::ACTIVE->value ? 
                   Messages::PROMOTION_ACTIVATED->value : 
