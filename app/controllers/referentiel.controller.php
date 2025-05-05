@@ -20,54 +20,6 @@ use App\Enums;
 use Exception; // Ajoutez cette ligne
 
 // Ajouter cette fonction après les requires et avant les autres fonctions
-function validate_referentiel($data) {
-    global $validator_services , $modelreferentiel;
-    $errors = [];
-    
-    // Validation du nom
-    if ($validator_services['is_empty']($data['name'])) {
-        $errors['name'] = 'Le nom du référentiel est obligatoire';
-    } else {
-        global $model;
-        if ($modelreferentiel['referentiel_name_exists']($data['name'])) {
-            $errors['name'] = 'Ce nom de referentiel existe déjà';
-        }
-    }
-    
-    // Validation de la description
-    if ($validator_services['is_empty']($data['description'])) {
-        $errors['description'] = 'La description est obligatoire';
-    }
-    
-    // Validation de la capacité
-    if ($validator_services['is_empty']($data['capacite'])) {
-        $errors['capacite'] = 'La capacité est obligatoire';
-    } elseif (!is_numeric($data['capacite']) || $data['capacite'] <= 0) {
-        $errors['capacite'] = 'La capacité doit être un nombre positif';
-    }
-    
-    // Validation des sessions
-    if ($validator_services['is_empty']($data['sessions'])) {
-        $errors['sessions'] = 'Le nombre de sessions est obligatoire';
-    } elseif (!in_array($data['sessions'], ['1', '2', '3'])) {
-        $errors['sessions'] = 'Le nombre de sessions doit être entre 1 et 3';
-    }
-    
-    // Validation de l'image si elle est présente
-    if (isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
-        $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
-        $max_size = 5 * 1024 * 1024; // 5MB
-        
-        if (!in_array($_FILES['image']['type'], $allowed_types)) {
-            $errors['image'] = 'Format d\'image non valide (JPG, PNG ou GIF uniquement)';
-        }
-        if ($_FILES['image']['size'] > $max_size) {
-            $errors['image'] = 'L\'image ne doit pas dépasser 5MB';
-        }
-    }
-    
-    return $errors;
-}
 
 // Affichage de la liste des référentiels de la promotion en cours
 function list_referentiels() {
@@ -184,7 +136,7 @@ function add_referentiel_form() {
 
 
 function add_referentiel_process() {
-    global $model, $session_services,$modelreferentiel;
+    global $model, $session_services,$modelreferentiel,$validator_services;
     
     // Vérification des droits d'accès
     check_profile(Enums\ADMIN);
@@ -198,8 +150,7 @@ function add_referentiel_process() {
     ];
     
     // Validation des données
-    $errors = validate_referentiel($referentiel_data);
-    
+$errors=$validator_services["validate_referentiel"]($referentiel_data)  ;  
     // S'il y a des erreurs, retourner au formulaire avec les messages
     if (!empty($errors)) {
         $session_services['set_flash_message']('danger', 'Veuillez corriger les erreurs dans le formulaire');

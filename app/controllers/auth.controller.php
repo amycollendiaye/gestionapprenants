@@ -8,13 +8,12 @@ require_once __DIR__ . '/../services/validator.service.php';
 require_once __DIR__ . '/../services/session.service.php';
 require_once __DIR__ . '/../enums/profile.enum.php';
 
-// Chargement des messages
-$error_messages = require_once __DIR__ . '/../translate/fr/error.fr.php';
-$success_messages = require_once __DIR__ . '/../translate/fr/message.fr.php';
+require_once __DIR__ . '/../translate/fr/error.fr.php';
+ require_once __DIR__ . '/../translate/fr/message.fr.php';
 
 use App\Models;
 use App\Services;
-use App\Enums;
+use App\translate\fr;
 
 // Affichage de la page de connexion
 function login_page() {
@@ -29,7 +28,7 @@ function login_page() {
 
 // Traitement de la connexion
 function login_process() {
-    global $model,$modelauth, $validator_services, $session_services, $error_messages, $success_messages;
+    global $model,$modelauth, $validator_services, $session_services;
     
     $session_services['start_session']();
     
@@ -43,13 +42,14 @@ function login_process() {
     
     // Validation des données
     $errors = [];
+  
     
     if ($validator_services['is_empty']($email)) {
-        $errors['email'] = $error_messages['form']['required'];
+        $errors['email'] ='';
     }
     
     if ($validator_services['is_empty']($password)) {
-        $errors['password'] = $error_messages['form']['required'];
+        $errors['password'] = '';
     }
     
     // S'il y a des erreurs, affichage du formulaire avec les erreurs

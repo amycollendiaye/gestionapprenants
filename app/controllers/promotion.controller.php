@@ -34,15 +34,16 @@ function list_promotions() {
 
     // Récupérer les statistiques
     $stats = $modelpromotion['get_statistics']();
-    
     // Récupérer le terme de recherche depuis GET
     $search = $_GET['search'] ?? '';
+  
     
     // Récupérer la page courante et le nombre d'éléments par page
     $current_page = isset($_GET['page_num']) ? (int)$_GET['page_num'] : 1;
     $items_per_page = 5; // Modification de 6 à 8 éléments par page
 
-    // Récupérer toutes les promotions
+    // Récupérer toutes les promotions*
+    
     $promotions = $modelpromotion['get_all_promotions']();
     
     // Filtrer les promotions si un terme de recherche est présent
@@ -51,6 +52,7 @@ function list_promotions() {
             return stripos($promotion['name'], $search) !== false;
         });
     }
+
     
     // Calculer le nombre total de pages
     $total_items = count($promotions);
@@ -213,7 +215,7 @@ function toggle_promotion_status() {
     }
     
     $result = $modelpromotion['toggle_promotion_status']($promotion_id);
-   
+ 
     if ($result) {
         $message = $result['status'] === Status::ACTIVE->value ? 
                   Messages::PROMOTION_ACTIVATED->value : 

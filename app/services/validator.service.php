@@ -156,57 +156,54 @@ $validator_services = [
             'errors' => $errors  // Où $errors est un tableau associatif avec les noms des champs comme clés
         ];
     },
-
-'validate_referentiel' => function(array $data, array $referentiels): array {
+"validate_referentiel"=> function ($data) {
     $errors = [];
-
-    // Validation du nom (obligatoire et unique)
-    if (empty(trim($data['nom'] ?? ''))) {
-        $errors['nom'] = "Le nom du référentiel est requis.";
+     global $validator_services;
+    
+    // Validation du nom
+    if ($validator_services['is_empty']($data['name'])) {
+        $errors['name'] = 'Le nom du référentiel est obligatoire';
     } else {
-        foreach ($referentiels as $ref) {
-            if (strtolower(trim($ref['nom'])) === strtolower(trim($data['nom']))) {
-                $errors['nom'] = "Un référentiel avec ce nom existe déjà.";
-                break;
-            }
+        global $model;
+        if ($modelreferentiel['referentiel_name_exists']($data['name'])) {
+            $errors['name'] = 'Ce nom de referentiel existe déjà';
         }
     }
-
-    // Validation de la description (obligatoire)
-    if (empty(trim($data['description'] ?? ''))) {
-        $errors['description'] = "La description est requise.";
+    
+    // Validation de la description
+    if ($validator_services['is_empty']($data['description'])) {
+        $errors['description'] = 'La description est obligatoire';
     }
-
-    // Validation de la capacité (obligatoire et numérique)
-    if (empty($data['capacite'])) {
-        $errors['capacite'] = "La capacité est requise.";
-    } elseif (!is_numeric($data['capacite']) || intval($data['capacite']) <= 0) {
-        $errors['capacite'] = "La capacité doit être un nombre positif.";
+    
+    // Validation de la capacité
+    if ($validator_services['is_empty']($data['capacite'])) {
+        $errors['capacite'] = 'La capacité est obligatoire';
+    } elseif (!is_numeric($data['capacite']) || $data['capacite'] <= 0) {
+        $errors['capacite'] = 'La capacité doit être un nombre positif';
     }
-
-    // Validation du nombre de sessions (obligatoire)
-    if (empty($data['sessions'])) {
-        $errors['sessions'] = "Le nombre de sessions est requis.";
+    
+    // Validation des sessions
+    if ($validator_services['is_empty']($data['sessions'])) {
+        $errors['sessions'] = 'Le nombre de sessions est obligatoire';
+    } elseif (!in_array($data['sessions'], ['1', '2', '3'])) {
+        $errors['sessions'] = 'Le nombre de sessions doit être entre 1 et 3';
     }
-
-    // Validation de la photo (obligatoire et format)
-    if (empty($data['image']['name'] ?? '')) {
-        $errors['image'] = "La photo est requise.";
-    } else {
-        $ext = strtolower(pathinfo($data['image']['name'], PATHINFO_EXTENSION));
-        $allowed = ['jpg', 'jpeg', 'png'];
-        if (!in_array($ext, $allowed)) {
-            $errors['image'] = "La photo doit être au format JPG ou PNG.";
+    
+    // Validation de l'image si elle est présente
+    if (isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
+        $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
+        $max_size = 5 * 1024 * 1024; // 5MB
+        
+        if (!in_array($_FILES['image']['type'], $allowed_types)) {
+            $errors['image'] = 'Format d\'image non valide (JPG, PNG ou GIF uniquement)';
         }
-        if ($data['image']['size'] > 2 * 1024 * 1024) {
-            $errors['image'] = "La photo ne doit pas dépasser 2 Mo.";
+        if ($_FILES['image']['size'] > $max_size) {
+            $errors['image'] = 'L\'image ne doit pas dépasser 5MB';
         }
     }
-
+    
     return $errors;
 },
-
-
 
  "valide_date"=>function ($date) {
     $pattern = '/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/([0-9]{4})$/';
