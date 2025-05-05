@@ -255,6 +255,19 @@
                 "680e2fb21b13e"
             ],
             "id": 16
+        },
+        {
+            "name": "promo9",
+            "date_debut": "11\/01\/2021",
+            "date_fin": "04\/04\/2022",
+            "image": null,
+            "status": "inactive",
+            "apprenants": [],
+            "referentiels": [
+                "680e2f58c9e4d",
+                "680e2fb21b13e"
+            ],
+            "id": 17
         }
     ],
     "referentiels": [
@@ -454,46 +467,7 @@
                 "adresse": "COLOBANE"
             }
         },
-        {
-            "id": "681761995cbe9",
-            "nom": "",
-            "prenom": "",
-            "email": "",
-            "image": null,
-            "status": "retenu",
-            "motpassee": "SONATEL123",
-            "telephone": "",
-            "referentiel": null,
-            "date_naissance": "",
-            "lieu_naissance": "",
-            "adresse": "",
-            "tuteur": {
-                "nomprenom": "",
-                "telephone": "",
-                "lienparente": "",
-                "adresse": ""
-            }
-        },
-        {
-            "id": "681761a470f3f",
-            "nom": "",
-            "prenom": "",
-            "email": "",
-            "image": null,
-            "status": "retenu",
-            "motpassee": "SONATEL123",
-            "telephone": "",
-            "referentiel": null,
-            "date_naissance": "",
-            "lieu_naissance": "",
-            "adresse": "",
-            "tuteur": {
-                "nomprenom": "",
-                "telephone": "",
-                "lienparente": "",
-                "adresse": ""
-            }
-        },
+      
         {
             "id": "6817683125db7",
             "nom": "colle",

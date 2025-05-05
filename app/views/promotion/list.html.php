@@ -158,8 +158,7 @@
 
                 <div class="promotion-card-list">
                     <div class="promotion-list-left">
-                        <img src="assets/images/uploads/promotions/<?= htmlspecialchars($promotion['image']) ?>" 
-                             alt="<?= htmlspecialchars($promotion['name']) ?>" 
+                        <img src=/assets/images/profiles/téléchargement.jpeg >
                              class="promotion-avatar">
                         <div class="promotion-list-middle">
                             <div class="promotion-title"><?= htmlspecialchars($promotion['name']) ?></div>
